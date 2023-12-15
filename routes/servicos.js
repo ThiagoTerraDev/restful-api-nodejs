@@ -14,4 +14,12 @@ router
     .route("/servicos/:id")
     .get((req, res) => servicoController.get(req, res));
 
+router
+    .route("/servicos/:id")
+    .delete((req, res) => servicoController.delete(req, res));
+
+router
+    .route("/servicos/:id")
+    .put((req, res) => servicoController.update(req, res));
+
 module.exports = router;
