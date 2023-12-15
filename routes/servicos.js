@@ -10,4 +10,8 @@ router
     .route("/servicos")
     .get((req, res) => servicoController.getAll(req, res));
 
+router
+    .route("/servicos/:id")
+    .get((req, res) => servicoController.get(req, res));
+
 module.exports = router;
