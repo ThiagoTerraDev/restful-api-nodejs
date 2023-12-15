@@ -16,6 +16,16 @@ const servicoController = {
             console.log(error);
         }
     },
+
+    getAll: async (req, res) => {
+        try {
+            const servicos = await ServicoModel.find();
+
+            res.json(servicos);
+        } catch (error) {
+            console.log(error);
+        }
+    },
 };
 
 module.exports = servicoController;
