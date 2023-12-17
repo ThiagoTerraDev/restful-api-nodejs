@@ -35,7 +35,7 @@ const excursaoController = {
         }
     },
 
-    getAll: async (rec, res) => {
+    getAll: async (req, res) => {
         try {
             const excursoes = await excursaoModel.find();
 
@@ -44,6 +44,21 @@ const excursaoController = {
             console.log(error);
         }
     },
+
+    get: async (req, res) => {
+        try {
+            const id = req.params.id;
+
+            const excursao = await excursaoModel.findById(id);
+
+            res.json(excursao);
+        } catch (error) {
+            if (error.name === "CastError" && error.kind === "ObjectId") {
+                res.status(404).json({ msg: "Excursão não encontrada!" });
+                return;
+            }
+        }
+    }
 };
 
 module.exports = excursaoController;

@@ -10,4 +10,8 @@ router
     .route("/excursoes")
     .get((req, res) => excursaoController.getAll(req, res));
 
+router
+    .route("/excursoes/:id")
+    .get((req, res) => excursaoController.get(req, res));
+
 module.exports = router;
