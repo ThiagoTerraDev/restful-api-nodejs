@@ -58,6 +58,21 @@ const excursaoController = {
                 return;
             }
         }
+    },
+
+    delete: async (req, res) => {
+        try {
+            const id = req.params.id;
+
+            const excursaoDeletada = await excursaoModel.findByIdAndDelete(id);
+
+            res.status(200).json({ excursaoDeletada, msg: "Excursão excluída com sucesso!" });
+        } catch (error) {
+            if (error.name === "CastError" && error.kind === "ObjectId") {
+                res.status(404).json({ msg: "Excursão não encontrada!" });
+                return;
+            }
+        }
     }
 };
 

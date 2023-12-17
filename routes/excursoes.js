@@ -14,4 +14,8 @@ router
     .route("/excursoes/:id")
     .get((req, res) => excursaoController.get(req, res));
 
+router
+    .route("/excursoes/:id")
+    .delete((req, res) => excursaoController.delete(req, res));
+
 module.exports = router;
