@@ -34,6 +34,16 @@ const excursaoController = {
             console.log(error);
         }
     },
+
+    getAll: async (rec, res) => {
+        try {
+            const excursoes = await excursaoModel.find();
+
+            res.json(excursoes);
+        } catch (error) {
+            console.log(error);
+        }
+    },
 };
 
 module.exports = excursaoController;
