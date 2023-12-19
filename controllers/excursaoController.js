@@ -73,6 +73,35 @@ const excursaoController = {
                 return;
             }
         }
+    },
+
+    update: async (req, res) => {
+        try {
+            const id = req.params.id; 
+            
+            const excursao = {
+                titulo: req.body.titulo,
+                preco: req.body.preco,
+                budget: req.body.budget,
+                imagem: req.body.imagem,
+                servicos: req.body.servicos
+            };
+
+            if (excursao.servicos && !checkExcursaoBudget(excursao.budget, excursao.servicos)) {
+                res.status(406).json({ msg: "O seu orçamento é insuficiente." })
+                return;
+            }
+
+            const excursaoAtualizada = await excursaoModel.findByIdAndUpdate(id, excursao);
+
+            res.status(200).json({ excursao, msg: "Excursão atualizada com sucesso!" });
+            
+        } catch (error) {
+            if (error.name === "CastError" && error.kind === "ObjectId") {
+                res.status(404).json({ msg: "Excursão não encontrada!" });
+                return;
+            }
+        }
     }
 };
 

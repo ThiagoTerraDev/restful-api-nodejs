@@ -18,4 +18,8 @@ router
     .route("/excursoes/:id")
     .delete((req, res) => excursaoController.delete(req, res));
 
+router
+    .route("/excursoes/:id")
+    .put((req, res) => excursaoController.update(req, res));
+
 module.exports = router;
