@@ -31,3 +31,5 @@ Para executar a API, basta executar o comando:
 $ npm start
 
 ```
+
+Para acessar a documentação da API, via Swagger: http://localhost:3000/api-docs/
