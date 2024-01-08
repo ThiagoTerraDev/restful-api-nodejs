@@ -1,9 +1,13 @@
+require('dotenv').config();
+
 const mongoose = require("mongoose");
 
 async function main() {
 
     try {
-        await mongoose.connect("mongodb+srv://thiagoterradev:vhcVj3uIwQLUCVOe@cluster0.olaawmw.mongodb.net/?retryWrites=true&w=majority");
+        const connectionString = process.env.JOURNEYDATABASE
+
+        await mongoose.connect(connectionString);
 
         console.log("Conectado ao banco!");
     } catch (error) {
