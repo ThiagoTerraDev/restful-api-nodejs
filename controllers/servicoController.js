@@ -9,11 +9,12 @@ const servicoController = {
                 preco: req.body.preco,
             };
 
-            const response = await ServicoModel.create(servico);
+            const servicoCriado = await ServicoModel.create(servico);
 
-            res.status(201).json({ response, msg: "Serviço criado com sucesso!" });
+            res.status(201).json({ servicoCriado, msg: "Serviço criado com sucesso!" });
         } catch (error) {
             console.log(error);
+            res.status(500).json({ msg: "Ocorreu um erro ao processar a requisição." });
         }
     },
 
@@ -21,9 +22,10 @@ const servicoController = {
         try {
             const servicos = await ServicoModel.find();
 
-            res.json(servicos);
+            res.status(200).json(servicos);
         } catch (error) {
             console.log(error);
+            res.status(500).json({ msg: "Ocorreu um erro ao processar a requisição." });
         }
     },
 
@@ -33,12 +35,16 @@ const servicoController = {
 
             const servico = await ServicoModel.findById(id);            
 
-            res.json(servico);
+            res.status(200).json(servico);
         } catch (error) {
+            console.log(error);
+
             if (error.name === "CastError" && error.kind === "ObjectId") {
                 res.status(404).json({ msg: "Serviço não encontrado!" });
                 return;
             }
+
+            res.status(500).json({ msg: "Ocorreu um erro ao processar a requisição." });
         }
     },
 
@@ -48,12 +54,16 @@ const servicoController = {
 
             const servicoDeletado = await ServicoModel.findByIdAndDelete(id);
 
-            res.status(200).json({ servicoDeletado, msg: "Serviço excluído com sucesso!" })
+            res.status(200).json({ servicoDeletado, msg: "Serviço excluído com sucesso!" });
         } catch (error) {
+            console.log(error);
+
             if (error.name === "CastError" && error.kind === "ObjectId") {
                 res.status(404).json({ msg: "Serviço não encontrado!" });
                 return;
             }
+
+            res.status(500).json({ msg: "Ocorreu um erro ao processar a requisição." });
         }
     },
 
@@ -69,13 +79,16 @@ const servicoController = {
 
             const servicoAtualizado = await ServicoModel.findByIdAndUpdate(id, servico);
 
-            res.status(200).json({ servico, msg: "Serviço atualizado com sucesso!" })
-
+            res.status(200).json({ servico, msg: "Serviço atualizado com sucesso!" });
         } catch (error) {
+            console.log(error);
+
             if (error.name === "CastError" && error.kind === "ObjectId") {
                 res.status(404).json({ msg: "Serviço não encontrado!" });
                 return;
             }
+
+            res.status(500).json({ msg: "Ocorreu um erro ao processar a requisição." });
         }
     }
 };

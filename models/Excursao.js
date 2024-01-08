@@ -9,7 +9,15 @@ const excursaoSchema = new Schema({
         type: String,
         required: true,
     },
-    preco: {
+    precoPadrao: {
+        type: Number,
+        required: true,
+    },
+    descricao: {
+        type: String,
+        required: true,
+    },
+    orcamento: {
         type: Number,
         required: true,
     },

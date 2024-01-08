@@ -11,24 +11,34 @@ const excursaoController = require("../controllers/excursaoController");
  *              type: object
  *              required:
  *                  - titulo
- *                  - preco
+ *                  - precoPadrao
+ *                  - descricao
+ *                  - orcamento
  *                  - imagem
  *              properties:                  
  *                  titulo:
  *                      type: string
- *                      description: O título da excursão
- *                  preco:
+ *                      description: O título da excursão.
+ *                  precoPadrao:
  *                      type: number
- *                      description: O valor da excursão
+ *                      description: O valor padrão da excursão.
+ *                  descricao:
+ *                      type: string
+ *                      description: A descrição da excursão.
+ *                  orcamento:
+ *                      type: number
+ *                      description: O orçamento disponível para investir na excursão.
  *                  imagem:
- *                      type: number
- *                      description: A imagem que representa a excursão
+ *                      type: string
+ *                      description: A imagem que representa a excursão.
  *                  servicos:
  *                      type: array
- *                      description: Os serviços contratados para compor a excursão
+ *                      description: Os serviços contratados para compor a excursão.
  *              example:                  
- *                  titulo: Deserto do Atacama, Chile
- *                  preco: 2000
+ *                  titulo: Deserto do Atacama, Chile.
+ *                  precoPadrao: 8000
+ *                  descricao: Viagem pelo deserto mais famoso do mundo
+ *                  orcamento: 12000
  *                  imagem: teste.jpg
  *                  servicos: [
  *                      {
@@ -39,7 +49,7 @@ const excursaoController = require("../controllers/excursaoController");
  *                      {
  *                          nome: "Alimentar animais 2",
  *                          descricao: "Dar comida aos animais Y",
- *                          preco: 1750                          
+ *                          preco: 750                          
  *                      }
  *                     ]
  */
@@ -60,13 +70,15 @@ const excursaoController = require("../controllers/excursaoController");
  *          tags: [Excursões]
  *          responses:
  *              200:
- *                  description: A lista de todas as excursões cadastradas
+ *                  description: A lista de todas as excursões cadastradas.
  *                  content:
  *                      application/json:
  *                          schema:
  *                              type: array
  *                              items:
  *                                  $ref: '#/components/schemas/Excursão'
+ *              500:
+ *                  description: Ocorreu um erro ao processar a requisição.
  */
 
 router
@@ -88,13 +100,15 @@ router
  *                          $ref: '#/components/schemas/Excursão'
  *          responses:
  *              201:
- *                  description: Excursão definida com sucesso!
+ *                  description: Excursão criada com sucesso!
  *                  content:
  *                      application/json:
  *                          schema:
  *                              $ref: '#/components/schemas/Excursão'
+ *              406:
+ *                  description: O seu orçamento é insuficiente.
  *              500:
- *                  description: Erro do servidor.
+ *                  description: Ocorreu um erro ao processar a requisição.
  */
 
 router
@@ -124,6 +138,8 @@ router
  *                              $ref: '#/components/schemas/Excursão'
  *              404:
  *                  description: Excursão não encontrada!
+ *              500:
+ *                  description: Ocorreu um erro ao processar a requisição.
  */
 
 router
@@ -159,8 +175,10 @@ router
  *                              $ref: '#/components/schemas/Excursão'
  *              404:
  *                  description: Excursão não encontrada!
+ *              406:
+ *                  description: O seu orçamento é insuficiente.
  *              500: 
- *                  description: Erro do servidor.
+ *                  description: Ocorreu um erro ao processar a requisição.
  */
 
 router
@@ -185,7 +203,9 @@ router
  *              200:
  *                  description: Excursão excluída com sucesso!
  *              404:
- *                  description: Excursão não encontrada! 
+ *                  description: Excursão não encontrada!
+ *              500:
+ *                  description: Ocorreu um erro ao processar a requisição.
  */
 
 router

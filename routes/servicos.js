@@ -15,13 +15,13 @@ const servicoController = require("../controllers/servicoController");
  *              properties:                  
  *                  nome:
  *                      type: string
- *                      description: O título do serviço
+ *                      description: O título do serviço.
  *                  descricao:
  *                      type: string
- *                      description: A descrição do serviço
+ *                      description: A descrição do serviço.
  *                  preco:
  *                      type: number
- *                      description: O valor do serviço
+ *                      description: O valor do serviço.
  *              example:                  
  *                  nome: Fotos e vídeos profissionais
  *                  descricao: Acesso às mídias da excursão, registradas por equipe profissional
@@ -44,13 +44,15 @@ const servicoController = require("../controllers/servicoController");
  *          tags: [Serviços]
  *          responses:
  *              200:
- *                  description: A lista de todos os serviços cadastrados
+ *                  description: A lista de todos os serviços cadastrados.
  *                  content:
  *                      application/json:
  *                          schema:
  *                              type: array
  *                              items:
  *                                  $ref: '#/components/schemas/Serviço'
+ *              500:
+ *                  description: Ocorreu um erro ao processar a requisição.
  */
 
 router
@@ -80,6 +82,8 @@ router
  *                              $ref: '#/components/schemas/Serviço'
  *              404:
  *                  description: Serviço não encontrado!
+ *              500:
+ *                  description: Ocorreu um erro ao processar a requisição.
  */
 
 router
@@ -107,7 +111,7 @@ router
  *                          schema:
  *                              $ref: '#/components/schemas/Serviço'
  *              500:
- *                  description: Erro do servidor.
+ *                  description: Ocorreu um erro ao processar a requisição.
  */
 
 router
@@ -144,7 +148,7 @@ router
  *              404:
  *                  description: Serviço não encontrado!
  *              500: 
- *                  description: Erro do servidor.
+ *                  description: Ocorreu um erro ao processar a requisição.
  */
 
 router
@@ -169,7 +173,9 @@ router
  *              200:
  *                  description: Serviço excluído com sucesso!
  *              404:
- *                  description: Serviço não encontrado! 
+ *                  description: Serviço não encontrado!
+ *              500:
+ *                  description: Ocorreu um erro ao processar a requisição.
  */
 
 router

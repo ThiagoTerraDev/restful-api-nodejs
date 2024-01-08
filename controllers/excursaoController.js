@@ -1,9 +1,10 @@
 const excursaoModel = require("../models/Excursao");
 
-const checkExcursaoBudget = (budget, servicos) => {
-    const priceSum = servicos.reduce((sum, servico) => sum + servico.preco, 0);
+const checkExcursaoOrcamento = (precoPadrao, orcamento, servicos) => {
+    const somaPrecoServicos = servicos.reduce((soma, servico) => soma + servico.preco, 0);
+    const precoTotalExcursao = somaPrecoServicos + precoPadrao
     
-    if (priceSum > budget ) {
+    if (precoTotalExcursao > orcamento ) {
         return false;
     }
 
@@ -16,22 +17,24 @@ const excursaoController = {
             
             const excursao = {
                 titulo: req.body.titulo,
-                preco: req.body.preco,
-                budget: req.body.budget,
+                precoPadrao: req.body.precoPadrao,
+                descricao: req.body.descricao,
+                orcamento: req.body.orcamento,
                 imagem: req.body.imagem,
                 servicos: req.body.servicos
             }
 
-            if (excursao.servicos && !checkExcursaoBudget(excursao.budget, excursao.servicos)) {
+            if (excursao.precoPadrao > excursao.orcamento || excursao.servicos && !checkExcursaoOrcamento(excursao.precoPadrao, excursao.orcamento, excursao.servicos)) {
                 res.status(406).json({ msg: "O seu orçamento é insuficiente." })
                 return;
             }
 
-            const resposta = await excursaoModel.create(excursao);
+            const excursaoCriada = await excursaoModel.create(excursao);
 
-            res.status(201).json({ resposta, msg: "Excursão definida com sucesso!" });
+            res.status(201).json({ excursaoCriada, msg: "Excursão criada com sucesso!" });
         } catch (error) {
             console.log(error);
+            res.status(500).json({ msg: "Ocorreu um erro ao processar a requisição." });
         }
     },
 
@@ -39,9 +42,10 @@ const excursaoController = {
         try {
             const excursoes = await excursaoModel.find();
 
-            res.json(excursoes);
+            res.status(200).json(excursoes);
         } catch (error) {
             console.log(error);
+            res.status(500).json({ msg: "Ocorreu um erro ao processar a requisição." });
         }
     },
 
@@ -51,12 +55,16 @@ const excursaoController = {
 
             const excursao = await excursaoModel.findById(id);
 
-            res.json(excursao);
+            res.status(200).json(excursao);
         } catch (error) {
+            console.log(error);
+
             if (error.name === "CastError" && error.kind === "ObjectId") {
                 res.status(404).json({ msg: "Excursão não encontrada!" });
                 return;
             }
+            
+            res.status(500).json({ msg: "Ocorreu um erro ao processar a requisição." });
         }
     },
 
@@ -68,10 +76,14 @@ const excursaoController = {
 
             res.status(200).json({ excursaoDeletada, msg: "Excursão excluída com sucesso!" });
         } catch (error) {
+            console.log(error);
+
             if (error.name === "CastError" && error.kind === "ObjectId") {
                 res.status(404).json({ msg: "Excursão não encontrada!" });
                 return;
             }
+
+            res.status(500).json({ msg: "Ocorreu um erro ao processar a requisição." });
         }
     },
 
@@ -81,26 +93,30 @@ const excursaoController = {
             
             const excursao = {
                 titulo: req.body.titulo,
-                preco: req.body.preco,
-                budget: req.body.budget,
+                precoPadrao: req.body.precoPadrao,
+                descricao: req.body.descricao,
+                orcamento: req.body.orcamento,
                 imagem: req.body.imagem,
                 servicos: req.body.servicos
             };
 
-            if (excursao.servicos && !checkExcursaoBudget(excursao.budget, excursao.servicos)) {
+            if (excursao.precoPadrao > excursao.orcamento || excursao.servicos && !checkExcursaoOrcamento(excursao.precoPadrao, excursao.orcamento, excursao.servicos)) {
                 res.status(406).json({ msg: "O seu orçamento é insuficiente." })
                 return;
             }
 
             const excursaoAtualizada = await excursaoModel.findByIdAndUpdate(id, excursao);
 
-            res.status(200).json({ excursao, msg: "Excursão atualizada com sucesso!" });
-            
+            res.status(200).json({ excursao, msg: "Excursão atualizada com sucesso!" });            
         } catch (error) {
+            console.log(error);
+
             if (error.name === "CastError" && error.kind === "ObjectId") {
                 res.status(404).json({ msg: "Excursão não encontrada!" });
                 return;
             }
+
+            res.status(500).json({ msg: "Ocorreu um erro ao processar a requisição." });
         }
     }
 };
