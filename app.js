@@ -15,7 +15,9 @@ const options = {
         },
         servers: [
             {
-                url: "http://localhost:3000/"
+                url: process.env.NODE_ENV === "production"
+                    ? "https://restful-api-nodejs.vercel.app"
+                    : "http://localhost:3000/"
             }
         ]
     },
@@ -27,7 +29,8 @@ const options = {
 
 const specs = swaggerJsDoc(options);
 
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
+app.use("/api-docs", swaggerUi.serve);
+app.get("/api-docs", swaggerUi.setup(specs));
 
 app.use(cors());
 
@@ -43,6 +46,8 @@ const routes = require("./routes/router");
 
 app.use("/api", routes);
 
-app.listen(3000, function() {
-    console.log("Servidor funcionando!");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, function() {
+    console.log(`Servidor funcionando na porta ${PORT}!`);
 });
