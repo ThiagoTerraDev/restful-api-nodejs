@@ -4,13 +4,28 @@ Este projeto faz parte do contexto da South Journey, uma agência fictícia a qu
 
 O objetivo desta aplicação é desempenhar o gerenciamento de custos das excursões. É implementada uma API seguindo o padrão REST, sendo permitido ao usuário consultar, adicionar, deletar ou editar excursões e serviços cadastrados no banco de dados (aplicação do conceito CRUD).
 
-O sistema oferece a possibilidade de adicionarmos um orçamento (budget), havendo validações que irão observar se o valor dos serviços contratados supera o orçamento disponível.
+O sistema oferece a possibilidade de adicionarmos um orçamento, havendo validações que irão observar se o valor total da excursão (o valor padrão do passeio somado aos serviços adicionais contratados) supera o orçamento disponível.
 
-Principais tecnologias utilizadas:
- - Node.js
- - Express
- - MongoDB
- - Mongoose
+Deploy: https://restful-api-nodejs.vercel.app/api/excursoes
+
+Repositório do front-end: https://github.com/ThiagoTerraDev/south-journey
+
+
+## Principais tecnologias utilizadas:
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+
+
+## Status: em desenvolvimento
+
+Algumas melhorias e funcionalidades serão implementadas, tais como:
+
+- Autenticação: Implementação de cadastro e login.
+- Implementação de testes automatizados com Jest.
+
 
 ## Como executar
 
@@ -33,3 +48,8 @@ $ npm start
 ```
 
 Para acessar a documentação da API, via Swagger: http://localhost:3000/api-docs/
+
+
+## Entre em contato
+
+Estou à disposição para esclarecer dúvidas e oferecer o suporte necessário. Entre em contato pelo e-mail thiagoterradev@gmail.com
