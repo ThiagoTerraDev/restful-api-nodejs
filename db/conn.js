@@ -1,11 +1,18 @@
-require('dotenv').config();
-
 const mongoose = require("mongoose");
 
 async function main() {
 
-    try {
-        const connectionString = process.env.JOURNEYDATABASE
+    try { 
+        let connectionString;
+
+        if (process.env.NODE_ENV === "development") {
+            connectionString = process.env.JOURNEYLOCALDATABASE;
+        } else if (process.env.NODE_ENV === "production") {
+            connectionString = process.env.JOURNEYDATABASE
+        } else {
+            console.error("NODE_ENV não definido corretamente.")
+            process.exit(1);
+        }
 
         await mongoose.connect(connectionString);
 
