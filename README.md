@@ -10,6 +10,8 @@ Deploy: https://restful-api-nodejs.vercel.app/api/excursoes
 
 Repositório do front-end: https://github.com/ThiagoTerraDev/south-journey
 
+Arquitetura do projeto South Journey: https://1drv.ms/i/s!AvTc9X8DiWmVl8IsCBDoJsWu2qsV8A?e=PtsR2W
+
 
 ## Principais tecnologias utilizadas:
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
