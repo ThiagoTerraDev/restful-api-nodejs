@@ -23,6 +23,7 @@ Repositório do front-end: https://github.com/ThiagoTerraDev/south-journey
 
 Algumas melhorias e funcionalidades serão implementadas, tais como:
 
+- Acesso local a um banco de dados para executar a API e testar suas operações em ambiente de desenvolvimento (usando o arquivo .env.development.local).
 - Autenticação: Implementação de cadastro e login.
 - Implementação de testes automatizados com Jest.
 
