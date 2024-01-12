@@ -13,9 +13,26 @@ Repositório do front-end: https://github.com/ThiagoTerraDev/south-journey
 Arquitetura do projeto South Journey: https://1drv.ms/i/s!AvTc9X8DiWmVl8IsCBDoJsWu2qsV8A?e=PtsR2W
 
 
-## Como executar / Requisitos
+## Principais tecnologias utilizadas:
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 
-Será necessário ter o Node.js instalado na versão 18.x
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+
+
+## Status: em desenvolvimento
+
+Algumas melhorias e funcionalidades serão implementadas, tais como:
+
+- Acesso local a um banco de dados para executar a API e testar suas operações em ambiente de desenvolvimento.
+- Autenticação: Implementação de cadastro e login.
+- Implementação de testes automatizados com Jest.
+
+
+## Como executar
+
+Será necessário ter o Node.js e o npm instalados.
 
 Após clonar o repositório, é necessário ir ao diretório raiz desse projeto pelo terminal para poder executar os comandos descritos abaixo:
 
@@ -29,27 +46,11 @@ Este comando instala as dependências/bibliotecas descritas no arquivo package.j
 Para executar a API, basta executar o comando:
 
 ```
-$ npm run dev
+$ npm start
 
 ```
 
 Para acessar a documentação da API, via Swagger: http://localhost:3000/api-docs/
-
-
-## Principais tecnologias utilizadas:
-![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
-
-![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
-
-![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
-
-
-## Status: em desenvolvimento
-
-Algumas melhorias e funcionalidades serão implementadas, tais como:
-
-- Autenticação: Implementação de cadastro e login.
-- Implementação de testes automatizados com Jest (em desenvolvimento em uma branch).
 
 
 ## Entre em contato
