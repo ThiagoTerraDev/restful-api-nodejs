@@ -15,6 +15,8 @@ Arquitetura do projeto South Journey: https://1drv.ms/i/s!AvTc9X8DiWmVl8IsCBDoJs
 
 ## Como executar / Requisitos
 
+OBSERVAÇÃO: A aplicação foi desenvolvida e executada perfeitamente no macOS. Entretanto, estou no processo de igualmente executar esta aplicação no Windows para verificar a existência de possíveis erros.
+
 Será necessário ter o Node.js instalado na versão 18.x
 
 Após clonar o repositório, é necessário ir ao diretório raiz desse projeto pelo terminal para poder executar os comandos descritos abaixo:
