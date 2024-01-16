@@ -38,7 +38,7 @@ Para acessar a documentação da API, via Swagger: http://localhost:3000/api-doc
 
 ## Como executar os Testes
 
-Após executar a API, através das instruções supracitadas, abra um novo terminal e execute o seguinte comando:
+Após executar a API, através das instruções supracitadas, abra um novo terminal, navegue até o diretório raiz do projeto e execute o seguinte comando:
 
 ```
 $ npm run test
