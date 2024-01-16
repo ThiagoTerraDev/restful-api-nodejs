@@ -15,8 +15,6 @@ Arquitetura do projeto South Journey: https://1drv.ms/i/s!AvTc9X8DiWmVl8IsCBDoJs
 
 ## Como executar / Requisitos
 
-OBSERVAÇÃO: A aplicação foi desenvolvida e executada perfeitamente no macOS. Entretanto, estou no processo de igualmente executar esta aplicação no Windows para verificar a existência de possíveis erros.
-
 Será necessário ter o Node.js instalado na versão 18.x
 
 Após clonar o repositório, é necessário ir ao diretório raiz desse projeto pelo terminal para poder executar os comandos descritos abaixo:
@@ -38,6 +36,16 @@ $ npm run dev
 Para acessar a documentação da API, via Swagger: http://localhost:3000/api-docs/
 
 
+## Como executar os Testes
+
+Após executar a API, através das instruções supracitadas, abra um novo terminal e execute o seguinte comando:
+
+```
+$ npm run test
+
+```
+
+
 ## Principais tecnologias utilizadas:
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 
@@ -51,7 +59,7 @@ Para acessar a documentação da API, via Swagger: http://localhost:3000/api-doc
 Algumas melhorias e funcionalidades serão implementadas, tais como:
 
 - Autenticação: Implementação de cadastro e login.
-- Implementação de testes automatizados com Jest (em desenvolvimento em uma branch).
+- Implementação de mais testes automatizados com Jest.
 
 
 ## Entre em contato
